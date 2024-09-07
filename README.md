@@ -1,62 +1,49 @@
-# Manfuzz
+# ManFuzz
 
-**Manfuzz** is a powerful tool designed to fuzz and test various functionalities within software applications to discover vulnerabilities and bugs.
+`ManFuzz` is a fuzzing tool designed to test the robustness of UNIX binaries by leveraging their manual (man) pages. It automatically extracts command-line usage patterns and options from binaries' manual pages and injects carefully crafted payloads to identify potential vulnerabilities like buffer overflows, format string exploits, and stack smashing attacks.
 
 ## Features
 
-- [Feature 1] - Explain the key functionality.
-- [Feature 2] - Explain another feature.
-- [Feature 3] - Explain additional features.
+- **Automated Fuzzing**: Uses payloads to fuzz binaries based on their `man` page information.
+- **Payload Variety**: Includes payloads for buffer overflows, format string attacks, NOP sleds, EIP overwrites, etc.
+- **Multi-threading**: Fuzzes multiple binaries in parallel using Python's `concurrent.futures`.
+- **Logging**: Crashes (e.g., `SIGSEGV`) and execution details are logged automatically.
+- **No External Dependencies**: Uses Python's built-in libraries.
+
+## Payload Types
+
+The following fuzzing payloads are used:
+
+- **Buffer Overflows**: Overflows with characters such as `A`, `B`, `C`, etc., to test boundary conditions.
+- **Format String Exploits**: Payloads such as `%n`, `%x`, `%s`, `%p` to exploit format string vulnerabilities.
+- **Stack Smashing**: Overwrites of return addresses using patterns like `\xde\xad\xbe\xef` or `\xf0\x0d\xba\xbe`.
+- **NOP Sleds**: Long sequences of `NOP` instructions followed by breakpoint instructions (`\xcc`).
+- **Mixed Patterns**: ASCII hex patterns, `ABCD` patterns for identifying offsets, etc.
+
+## Requirements
+
+- Python 3.x
+- UNIX-based system with access to `man` pages
+- Required Python modules (all included in Python's standard library): `subprocess`, `concurrent.futures`, `re`, `signal`, `logging`, `random`, and `time`.
 
 ## Installation
 
 1. Clone the repository:
+
     ```bash
     git clone https://github.com/yourusername/manfuzz.git
-    ```
-
-2. Navigate to the project directory:
-    ```bash
     cd manfuzz
     ```
 
-3. Install the necessary dependencies:
-    ```bash
-    pip install -r requirements.txt
-    ```
+2. Make sure you have Python 3 installed.
+
+3. No additional Python packages are required since all dependencies are part of the standard library.
 
 ## Usage
 
-To start using **Manfuzz**, follow the steps below:
+To run `ManFuzz`, you can provide a path to either a single binary file or a directory containing multiple binaries. `ManFuzz` will parse the binaries' manual pages, extract the command-line usage patterns and options, and use them to generate fuzzing payloads.
 
-1. Command to run the tool:
-    ```bash
-    python manfuzz.py --option <input>
-    ```
+### Fuzzing a Single Binary
 
-2. Example:
-    ```bash
-    python manfuzz.py --target example.com
-    ```
-
-## Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1. Fork the project.
-2. Create a new branch (`git checkout -b feature-branch`).
-3. Commit your changes (`git commit -m 'Add some feature'`).
-4. Push to the branch (`git push origin feature-branch`).
-5. Open a Pull Request.
-
-## License
-
-**Manfuzz** is licensed under the [GPL-3.0 License](https://www.gnu.org/licenses/gpl-3.0.html).
-
-## Contact
-
-For any inquiries or support, you can reach out via:
-
-- Email: example@example.com
-- GitHub: [yourusername](https://github.com/yourusername)
-
+```bash
+python3 manfuzz.py /path/to/binary
