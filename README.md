@@ -1,6 +1,6 @@
 # ManFuzz
 
-`ManFuzz` is a fuzzing tool designed to test the robustness of UNIX binaries by leveraging their manual (man) pages. It automatically extracts command-line usage patterns and options from binaries' manual pages and injects carefully crafted payloads to identify potential vulnerabilities like buffer overflows, format string exploits, and stack smashing attacks.
+`ManFuzz` is a fuzzing tool designed to test the robustness of UNIX binaries by leveraging their manual (man) pages. It automatically extracts command-line usage patterns and options from binaries' manual pages and injects carefully crafted payloads to identify potential vulnerabilities like buffer overflows, format string exploits, and stack smashing attacks. This code was developed in 2004. Still works today (2024) :)
 
 ## Features
 
