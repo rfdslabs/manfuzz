@@ -71,5 +71,6 @@ The type of crash (e.g., SIGSEGV).
 Any other relevant information from the fuzzing process.
 Example Log Entry
 
-** SIGSEGV on ['/bin/ksh', 'whence', 'AAAAAAAAAAAAAAAAA
+** SIGSEGV on ['/bin/ksh', 'whence', 'AAAAAAAAAAAAAAAAA...
+
 This example indicates that a segmentation fault occurred when running ls -l with a long string of A characters as input.
