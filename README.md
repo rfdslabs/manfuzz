@@ -31,7 +31,7 @@ The following fuzzing payloads are used:
 1. Clone the repository:
 
     ```bash
-    git clone https://github.com/yourusername/manfuzz.git
+    git clone https://github.com/rfdslabs/manfuzz.git
     cd manfuzz
     ```
 
