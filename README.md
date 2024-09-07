@@ -56,7 +56,11 @@ python3 manfuzz.py /path/to/binary
 python3 manfuzz.py /path/to/directory
  ```
 
+### Fuzzing All suid Binaries
 
+```bash
+find / -perm -4000 -type f 2>/dev/null | xargs -I {} python3 manfuzz.py {}
+ ```
 ### Multi-Threaded Fuzzing
 
 By default, ManFuzz will use up to 4 threads to fuzz binaries in parallel. You can adjust this by modifying the MAX_WORKERS variable in the script.
