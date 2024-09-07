@@ -47,3 +47,30 @@ To run `ManFuzz`, you can provide a path to either a single binary file or a dir
 
 ```bash
 python3 manfuzz.py /path/to/binary
+
+ ```
+
+### Fuzzing All Binaries in a Directory
+
+```bash
+python3 manfuzz.py /path/to/directory
+ ```
+
+
+### Multi-Threaded Fuzzing
+
+```bash
+By default, ManFuzz will use up to 4 threads to fuzz binaries in parallel. You can adjust this by modifying the MAX_WORKERS variable in the script.
+ ```
+
+## Logging
+
+All fuzzing activities and any crashes encountered are logged automatically. The log files are stored in the fuzz_logs directory. Each binary will have its own log file, named after the binary, detailing:
+
+The command that caused the crash.
+The type of crash (e.g., SIGSEGV).
+Any other relevant information from the fuzzing process.
+Example Log Entry
+
+** SIGSEGV on ['/bin/ksh', 'whence', 'AAAAAAAAAAAAAAAAA
+This example indicates that a segmentation fault occurred when running ls -l with a long string of A characters as input.
