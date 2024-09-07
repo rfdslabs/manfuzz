@@ -59,9 +59,8 @@ python3 manfuzz.py /path/to/directory
 
 ### Multi-Threaded Fuzzing
 
-```bash
 By default, ManFuzz will use up to 4 threads to fuzz binaries in parallel. You can adjust this by modifying the MAX_WORKERS variable in the script.
- ```
+
 
 ## Logging
 
