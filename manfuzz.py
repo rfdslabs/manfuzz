@@ -12,7 +12,7 @@
 Still working today 2024!
 
  Author: @rfdslabs
- License: MIT License
+ License: GNU GENERAL PUBLIC LICENSE
 
  Description: This script fuzzes UNIX binaries by leveraging their manual pages, generating
               potential fuzzing payloads to discover vulnerabilities such as buffer overflows,
